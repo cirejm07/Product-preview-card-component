@@ -48,7 +48,7 @@ body {
 
 .card-img {
     background-image: url('./images/image-product-mobile.jpg');
-    min-height: 350px;
+    height: 350px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,6 +128,19 @@ body {
 @media (max-width: 375px) {
     .card-price {
         flex-direction: column;
+    }
+
+    .card-img {
+        min-height: 200px;
+    }
+
+    .card-content :where(
+    .card-header, 
+    .card-title, 
+    .card-description, 
+    .card-price, 
+    button) {
+        padding: 0.5rem;
     }
 } 
 
