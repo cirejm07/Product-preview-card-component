@@ -24,13 +24,13 @@ body {
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
+    background-color: var(--cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    background-color: var(--cream);
-    height: 100%;
-    display: grid;
-}
+
 
 .card :where(.card-title, .card-price > span) {
     font-family: 'Fraunces', serif;
@@ -42,31 +42,29 @@ body {
     border-radius: 1rem;
     overflow: hidden;
     background-color: var(--white);
-
-    /* grid container as child  */
-    justify-self: center;
-    align-self: center;
-
-    /* self grid as parent */
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-img {
     background-image: url('./images/image-product-mobile.jpg');
-    width: 100%;
     height: 350px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.card :where(
+.card-content {
+    margin-bottom: 2rem;
+}
+
+.card-content :where(
     .card-header, 
     .card-title, 
     .card-description, 
     .card-price, 
     button) {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
     }
 
 .card-header {
@@ -127,23 +125,45 @@ body {
                 width: 25px;
             }
 
+@media (max-width: 375px) {
+    .card-price {
+        flex-direction: column;
+    }
+} 
+
 @media (min-width: 768px) {
     
     .card {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        width: 50%;
+        width: 60%;
+        min-width: 45rem;
     }
 
     .card-img {
-        grid-row: 1 / 6;
         width: 100%;
         height: 100%;
         background-image: url('./images/image-product-desktop.jpg');
     }
 
-    .card-header {
-        align-self: center;
+    .card-content {
+        
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .card-content :where(
+    .card-header, 
+    .card-title, 
+    .card-description, 
+    .card-price, 
+    button) {
+        padding: 2rem;
+    }
+
+    .card-price, 
+    button {
+        margin-top: 1rem;
     }
 
 }
